@@ -6,10 +6,10 @@ const UserSchema = new mongoose.Schema({
   userLastName: { type: String, required: false },
   userEmail: { type: String, required: true, unique: true },
   emailVerified: { type: Boolean, required: true },
-  parkHistory: [
+  sublist: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "UserParking",
+      ref: "Subscription",
       required: false,
     },
   ],

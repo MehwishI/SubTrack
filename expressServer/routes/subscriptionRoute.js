@@ -4,15 +4,15 @@ const router = express.Router();
 const {
   fetchUserParkingData,
   saveUserParkingData,
-} = require("../controllers/userParkingController");
+} = require("../controllers/subscriptionController");
 
 /**
  *@swagger
- * /api/user/parking:
+ * /api/user/subscription:
  *   post:
  *     tags:
- *       - User Parking
- *     summary: Returns user parking history from DB.
+ *       - User Subscription
+ *     summary: Returns user subscription from DB.
  *     requestBody:
  *       required: true
  *       content:
@@ -34,16 +34,16 @@ const {
  *               properties:
  *                 message:
  *                   type: string
- *                   example: User Parking Data!
+ *                   example: User Subscription Data!
  */
 
 /**
  *@swagger
- * /api/user/parking/save:
+ * /api/user/subscription/save:
  *   post:
  *     tags:
- *       - User Parking
- *     summary: Saves the user parking data into Database.
+ *       - User Subscription
+ *     summary: Saves the user subscription data into Database.
  *     requestBody:
  *       required: true
  *       content:
@@ -54,40 +54,32 @@ const {
  *               userid:
  *                  type: string
  *                  example: "Add userid here"
- *               email:
+ *               name:
  *                  type: string
- *                  format: email
- *                  example: "Add user email here"
- *               latitude:
- *                  type: number
- *                  example: "Add latitude here"
- *               longitude:
- *                  type: number
- *                  example: "Add longitude here"
- *               paystation_number:
+ *
+ *                  example: "Add subscription name here"
+ *               type:
  *                  type: string
- *                  example: "paystation number"
- *               restriction:
+ *                  example: "Add type here"
+ *               plan:
+ *                  type: string
+ *                  example: "Add plan here"
+ *               price:
+ *                  type: Number
+ *                  example: "price here"
+ *               billFreq:
  *                  type: string
  *                  example: "restriction"
- *               time_limit:
+ *               renewalDate:
+ *                  type: Date
+ *                  example: "renewal date"
+ *               status:
  *                  type: string
- *                  example: "time limit"
- *               street:
+ *                  example: "status (Active/cancelled)"
+ *               paymentMethod:
  *                  type: string
- *                  example: "street"
- *               total_space:
- *                  type: string
- *                  example: "total space"
- *               accessible_space:
- *                  type: string
- *                  example: "accessible_space"
- *               hourly_rate:
- *                  type: string
- *                  example: "hourly rate"
- *               mobile_pay_zone:
- *                  type: string
- *                  example: "mobile pay zone"
+ *                  example: "payment method"
+ 
  *
  *     responses:
  *       200:
@@ -102,6 +94,6 @@ const {
  *                   example: "User parking data saved successfully"
  */
 
-router.post("/user/parking", fetchUserParkingData);
-router.post("/user/parking/save", saveUserParkingData);
+router.post("/user/subscription", fetchUserParkingData);
+router.post("/user/subscription/save", saveUserParkingData);
 module.exports = router;

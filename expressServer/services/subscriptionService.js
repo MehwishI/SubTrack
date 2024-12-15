@@ -1,14 +1,13 @@
-const userParkingModel = require("../models/UserParking");
+const subModel = require("../models/Subscription");
 let userModel = require("../models/User");
-const userService = require("./userDataService");
+//const subService = require("./subscriptionService");
 const { default: mongoose } = require("mongoose");
 const User = mongoose.model("User");
 
 //get user parking data from db
 //call encrypt data()
 
-const getUserParkingHistory = async (userId) => {
-
+const getSubscriptionData = async (userId) => {
   let userfound = {};
   try {
     userFound = await userService.getUserData(userId);
@@ -30,16 +29,16 @@ const getUserParkingHistory = async (userId) => {
   }
 
   try {
-    const parkHistory = await userParkingModel
+    const subData = await subModel
       .find({
         //
         user: userFound._id,
       })
       .exec();
 
-    if (!parkHistory) {
+    if (!subData) {
       return null;
-    } else return parkHistory;
+    } else return subData;
   } catch (error) {
     console.error(error.message);
     throw error;
@@ -48,7 +47,7 @@ const getUserParkingHistory = async (userId) => {
 
 //post user parking data to db
 //call encrypt data()
-const saveUserParkingHistory = async (parkData, userId) => {
+const saveSubscriptionData = async (subData, userId) => {
   //find the user with the given userid
 
   let userFound = null;
@@ -66,28 +65,32 @@ const saveUserParkingHistory = async (parkData, userId) => {
     console.log(error.message);
     throw error;
   }
+  //let rDate;
+  // if (subData.billFreq === "Monthly") {
+  //  rDate = new Date()
+
+  //}
 
   try {
     //create new instance of parking model
-    const newParkItem = new userParkingModel();
-    newParkItem.locLatitude = parkData.latitude;
-    newParkItem.locLongitude = parkData.longitude;
-    newParkItem.user = userFound._id;
-    newParkItem.paystation_number = parkData.paystation_number;
-    newParkItem.restriction = parkData.restriction;
-    newParkItem.time_limit = parkData.time_limit;
-    newParkItem.street = parkData.street;
-    newParkItem.total_space = parkData.total_space;
-    newParkItem.accessible_space = parkData.accessible_space;
-    newParkItem.hourly_rate = parkData.hourly_rate;
-    newParkItem.mobile_pay_zone = parkData.mobile_pay_zone;
+    const newItem = new subModel();
+    newItem.name = subData.name;
+    newItem.type = subData.type;
+    newItem.user = userFound._id;
+    newItem.plan = subData.plan;
+    newItem.price = subData.price;
+    newItem.billFreq = subData.billFreq;
+    newItem.startDate = subData.startDate;
+    newItem.renewalDate = subData.renewalDate; //need to be changed when data will be coming from frontend
+    newItem.status = subData.status;
+    newItem.paymentMethod = subData.paymentMethod;
 
-    const savedItem = await newParkItem.save();
+    const savedItem = await newItem.save();
 
     //update userFound
-    userFound.parkHistory.push(newParkItem._id);
+    userFound.sublist.push(newItem._id);
     userFound.save();
-    
+
     // res.status(201).json(savedItem);
     return userFound;
   } catch (error) {
@@ -95,4 +98,4 @@ const saveUserParkingHistory = async (parkData, userId) => {
     throw error;
   }
 };
-module.exports = { getUserParkingHistory, saveUserParkingHistory };
+module.exports = { getSubscriptionData, saveSubscriptionData };

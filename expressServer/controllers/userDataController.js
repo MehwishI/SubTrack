@@ -1,23 +1,27 @@
 const userService = require("../services/userDataService");
-const { getDecryptedData, getEncrytedData } = require("../services/encryptService");
+const {
+  getDecryptedData,
+  getEncrytedData,
+} = require("../services/encryptService");
 
 const fetchUserData = async (req, res) => {
   const userid = req.body.userid;
   try {
     // start decrypt data
-    const getDecryptData = getDecryptedData(userid);
+    const getDecryptData = userid;
+    //getDecryptedData(userid);
 
     const user = await userService.getUserData(getDecryptData);
     // const user = await userService.getUserData(userid);
 
     // encrypt data before passing back to frontend
-    const getEncryptRes = getEncrytedData(user);
+    //const getEncryptRes = getEncrytedData(user);
 
     if (!user) {
       res.status(404).send(false);
     } else {
       // res.status(200).send(user);
-      res.status(200).send(getEncryptRes);
+      res.status(200).send(user);
     }
   } catch (error) {
     console.log(error);
@@ -27,7 +31,9 @@ const fetchUserData = async (req, res) => {
 
 const saveUserData = async (req, res) => {
   // start decrypt data
-  const getDecryptData = getDecryptedData(req.body.encryptUserData);
+  const getDecryptData = req.body;
+  //getDecryptedData(req.body.encryptUserData);
+  console.log(getDecryptData);
 
   // const userData = req.body.userData;
 
@@ -36,7 +42,8 @@ const saveUserData = async (req, res) => {
 
   if (!userExist) {
     try {
-      const data = await userService.saveUserData(getDecryptData.userData);
+      const data = await userService.saveUserData(getDecryptData);
+
       if (data) {
         res.status(200).send("User data saved!");
       } else {
