@@ -9,7 +9,7 @@ const SubscriptionSchema = new mongoose.Schema({
   plan: { type: String, required: true },
   price: { type: Number, required: true },
   billFreq: { type: String, required: true },
-  startDate: { type: Date, requried:true, default:Date.now()}
+  startDate: { type: Date, requried: true, default: Date.now() },
   renewalDate: {
     type: Date,
     required: true,
@@ -18,6 +18,13 @@ const SubscriptionSchema = new mongoose.Schema({
 
   paymentMethod: { type: String, required: true },
   user: { type: mongoose.Types.ObjectId, ref: "User" },
+  notifList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "NotifList",
+      required: false,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Subscription", SubscriptionSchema);

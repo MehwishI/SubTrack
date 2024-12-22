@@ -11,7 +11,7 @@ const { expressjwt: jwt } = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const getAuthService = require("./services/authService");
 //const wpaPaystationRoutes = require("./routes/wpaPaystation");
-//const googleApiRoutes = require("./routes/googleRoute");
+const subcriptionRoutes = require("./routes/subscriptionRoute");
 const userDataRoutes = require("./routes/userDataRoute");
 //const userParkingRoutes = require("./routes/userParkingRoute");
 
@@ -93,7 +93,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //app.use("/api", wpaPaystationRoutes);
 // app.use("/api", getCheckJwt, wpaPaystationRoutes);
-//app.use("/api", googleApiRoutes);
+app.use("/api", subcriptionRoutes);
 app.use("/api", userDataRoutes);
 //app.use("/api", userParkingRoutes);
 // Server listening on a port

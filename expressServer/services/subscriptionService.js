@@ -16,7 +16,7 @@ const getSubscriptionData = async (userId) => {
       //console.log("userFound in parking service", userFound);
       if (userFound.emailVerified === false) {
         console.log(
-          "Email not verified, please verify your email to view parking history. "
+          "Email not verified, please verify your email to view subscription data. "
         );
         return null;
       }

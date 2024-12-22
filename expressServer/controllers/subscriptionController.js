@@ -39,7 +39,7 @@ const saveUserSubscriptionData = async (req, res) => {
     //parking_date: Date.now(),
   };
   try {
-    const savedSub = await subService.saveSubcription(subData, userid);
+    const savedSub = await subService.saveSubscriptionData(subData, userid);
     if (savedSub) {
       return res.status(200).send("subscription data saved successfully!");
     } else res.status(500).send("User subscription data not saved!");
