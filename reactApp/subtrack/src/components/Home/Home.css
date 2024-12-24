@@ -5,10 +5,23 @@
   overflow-y: scroll;
   width: 100%;
 }
+#logo-img {
+  width: 100%;
+}
+.home-content {
+  width: 80%;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .what-group {
   display: flex;
   flex-direction: column;
-  margin-top: 33px;
+  margin-top: 80px;
+  width: 100%;
 }
 .what-text {
   font-size: 40px;
@@ -26,16 +39,80 @@
 }
 .choose-group {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  margin-top: 94px;
+
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .content1 {
   display: flex;
 
+  width: 50%;
   text-align: center;
-}
-.content1 img {
-  width: 445px;
   margin: auto;
+  padding-left: 40px;
+}
+.cg-img {
+  display: block;
+}
+.manage-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 94px;
+  margin-left: 36px;
+
+  margin-right: 20px;
+}
+.mgimg {
+  width: 50%;
+
+  margin-left: 30px;
+}
+/* .mgcontent {
+  width: 50%;
+} */
+.test-group {
+  display: flex;
+  justify-content: space-around;
+
+  margin-left: 36px;
+
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.testname {
+  font-style: H3 - bold 32 (40, 0.1px);
+  font-family: mulish-variable, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(55, 63, 65, 1);
+  margin-top: 90px;
+}
+.testquote {
+  margin-left: 30px;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 70px;
+}
+.footer img {
+  width: 100%;
+}
+.mess {
+  position: fixed;
+  top: 406px;
+  /* top: 406px; */
+  right: 0px;
+  width: 75px;
+  height: 75px;
+  float: right;
   display: block;
 }
 @media only screen and (max-width: 768px) {
@@ -56,5 +133,19 @@
   .choose-group {
     display: flex;
     flex-direction: column;
+  }
+  .manage-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .home-content {
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }
