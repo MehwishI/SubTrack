@@ -25,7 +25,7 @@
       rgba(0, 0, 0, 0.5) 0%,
       rgba(0, 0, 0, 0.5) 100%
     ),
-    url("../images/login/image.png") lightgray 50% / cover no-repeat;
+    url("../../images/login/image.png") lightgray 50% / cover no-repeat;
   width: 721px;
   height: 900px;
   flex-shrink: 0;

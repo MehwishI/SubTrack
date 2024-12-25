@@ -2,24 +2,24 @@ import React, { useEffect, useState } from "react";
 import Login from "../Authentication/Login";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import titleimg from "../images/title.png";
+import titleimg from "../../images/title.png";
 import "./Home.css";
-import what from "../images/What makes us unique_.png";
-import what1 from "../images/whatgroup/Group 282236.png";
-import what2 from "../images/whatgroup/Group 282300.png";
-import what3 from "../images/whatgroup/Group 282299.png";
+import what from "../../images/What makes us unique_.png";
+import what1 from "../../images/whatgroup/Group 282236.png";
+import what2 from "../../images/whatgroup/Group 282300.png";
+import what3 from "../../images/whatgroup/Group 282299.png";
 
-import content1 from "../images/choose/content.png";
-import content1img from "../images/choose/Frame 8699.png";
+import content1 from "../../images/choose/content.png";
+import content1img from "../../images/choose/Frame 8699.png";
 
-import manage from "../images/manage/Frame 2.png";
-import manageimg from "../images/manage/Group 282245.png";
+import manage from "../../images/manage/Frame 2.png";
+import manageimg from "../../images/manage/Group 282245.png";
 
-import testimg from "../images/testimo/image.png";
-import testquote from "../images/testimo/quote.png";
+import testimg from "../../images/testimo/image.png";
+import testquote from "../../images/testimo/quote.png";
 
-import footer from "../images/Future space.png";
-import message from "../images/Group 50.png";
+import footer from "../../images/Future space.png";
+import message from "../../images/Group 50.png";
 
 const Home = () => {
   const navigate = useNavigate();

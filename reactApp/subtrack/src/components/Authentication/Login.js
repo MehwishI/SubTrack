@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router";
 import "./Login.css";
-import loginimg from "../images/login/image.png";
-import frame from "../images/login/Frame 4409.png";
+import loginimg from "../../images/login/image.png";
+import frame from "../../images/login/Frame 4409.png";
 const Login = () => {
   const { loginWithRedirect, user } = useAuth0();
   const navigate = useNavigate();
