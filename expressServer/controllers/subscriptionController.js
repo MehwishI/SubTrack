@@ -6,7 +6,7 @@ const {
 
 const fetchUserSubscriptionData = async (req, res) => {
   try {
-    const subData = await subService.getUserSubscription(req.body.userid);
+    const subData = await subService.getSubscriptionData(req.body.userid);
     if (!subData) {
       res.status(404).send("Subscription data not available for this user.");
     } else {
