@@ -2,6 +2,7 @@ const subModel = require("../models/Subscription");
 let userModel = require("../models/User");
 //const subService = require("./subscriptionService");
 const { default: mongoose } = require("mongoose");
+const userService = require("../services/userDataService");
 const User = mongoose.model("User");
 
 //get user parking data from db

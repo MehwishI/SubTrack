@@ -67,6 +67,18 @@ const {
  *               emailVerified:
  *                  type: boolean
  *                  example: "Add true or false"
+ *               businessName:
+ *                  type: string
+ *                  example: "Add name"
+ *               country:
+ *                  type: string
+ *                  example: "Add country"
+ *               industry:
+ *                  type: string
+ *                  example: "Add industry"
+ *               language:
+ *                  type: string
+ *                  example: "Add language"
  *
  *
  *     responses:
