@@ -5,7 +5,7 @@ const {
   saveReminderData,
   fetchReminderData,
 } = require("../controllers/reminderController");
-const { saveReminder } = require("../services/reminderService");
+//const { saveReminder } = require("../services/reminderService");
 
 /**
  *@swagger

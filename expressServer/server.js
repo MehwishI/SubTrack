@@ -77,10 +77,10 @@ const swaggerOptions = {
         url: "http://localhost:3001",
         description: "Development server(local)",
       },
-      // {
-      //   url: "https://parking-space-finder-backend.vercel.app",
-      //   description: "Production server",
-      // },
+      {
+        url: "https://sub-track-backend-server.vercel.app",
+        description: "Production server",
+      },
     ],
   },
   apis: ["./routes/*.js"], // Path to API documentation
