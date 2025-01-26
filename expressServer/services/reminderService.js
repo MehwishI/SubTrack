@@ -1,38 +1,39 @@
+const ObjectId = require("mongodb").ObjectId;
 const subModel = require("../models/Subscription");
 let userModel = require("../models/User");
 const remModel = require("../models/Reminder");
 //const subService = require("./subscriptionService");
 const { default: mongoose } = require("mongoose");
-const userService = require("../services/userDataService");
+const subService = require("../services/subscriptionService");
 const User = mongoose.model("User");
 
 //get user subscription reminder data from db
 //call encrypt data()
-
-const getReminder = async (subId) => {
-  let subfound = {};
+const findSub = async (subId) => {
+  let subFound = null;
   try {
-    subFound = await subService.getSubscriptionData(userId);
-
-    if (subFound) {
-      //console.log("userFound in parking service", userFound);
-      console.log("Subscription data found");
-    } else {
-      console.log(
-        "This Subscription record not found, cannot retrieve reminder data"
-      );
-      return null;
-    }
+    subFound = await subModel
+      .findOne({
+        _id: new ObjectId(subId),
+      })
+      .exec();
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     throw error;
   }
+  return subFound;
+};
 
+const getReminder = async (subId) => {
+  const subFound = await findSub(subId);
+  if (!subFound) {
+    return null;
+  }
   try {
     const remData = await remModel
       .find({
         //
-        subscription: subId,
+        subscription: subFound._id,
       })
       .exec();
 
@@ -48,23 +49,13 @@ const getReminder = async (subId) => {
 //post user parking data to db
 //call encrypt data()
 const saveReminder = async (remData, subId) => {
-  //find the user with the given userid
+  //find the subscription with the given subid
 
-  let subFound = null;
-
-  try {
-    subFound = await subModel
-      .findOne({
-        subid: subId,
-      })
-      .exec();
-    if (!subFound) {
-      return null;
-    }
-  } catch (error) {
-    console.log(error.message);
-    throw error;
+  const subFound = await findSub(subId);
+  if (!subFound) {
+    return null;
   }
+
   //let rDate;
   // if (remData.billFreq === "Monthly") {
   //  rDate = new Date()

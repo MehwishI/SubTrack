@@ -10,7 +10,7 @@ const cors = require("cors");
 const { expressjwt: jwt } = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const getAuthService = require("./services/authService");
-//const wpaPaystationRoutes = require("./routes/wpaPaystation");
+const reminderRoutes = require("./routes/reminderRoute");
 const subcriptionRoutes = require("./routes/subscriptionRoute");
 const userDataRoutes = require("./routes/userDataRoute");
 //const userParkingRoutes = require("./routes/userParkingRoute");
@@ -95,7 +95,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // app.use("/api", getCheckJwt, wpaPaystationRoutes);
 app.use("/api", subcriptionRoutes);
 app.use("/api", userDataRoutes);
-//app.use("/api", userParkingRoutes);
+app.use("/api", reminderRoutes);
 // Server listening on a port
 
 app.listen(PORT, (error) => {
@@ -115,37 +115,6 @@ const nodemailer = require("nodemailer");
 // ...
 
 console.log(new Date());
-// Create mail transporter.
-let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 25,
-  auth: {
-    user: "mydev0819@gmail.com",
-    pass: "Hehe4986902!!",
-  },
-});
 
-// ...
-
-// Sending emails every Monday.
-cron.schedule("56 21 * * 1", function () {
-  console.log("---------------------");
-  console.log("Running Cron Job");
-
-  let messageOptions = {
-    from: "mydev0819@gmail.com",
-    to: "mydev0819@gmail.com",
-    subject: "Scheduled Email from SUBTrack",
-    text: "Hi there. This email was automatically sent by us.",
-  };
-
-  transporter.sendMail(messageOptions, function (error, info) {
-    if (error) {
-      throw error;
-    } else {
-      console.log("Email successfully sent!");
-    }
-  });
-});
 ////
 module.exports = app;

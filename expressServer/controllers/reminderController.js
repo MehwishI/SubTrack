@@ -1,4 +1,4 @@
-const subService = require("../services/notificationService");
+const remService = require("../services/reminderService");
 const {
   getDecryptedData,
   getEncrytedData,
@@ -6,7 +6,7 @@ const {
 
 const fetchReminderData = async (req, res) => {
   try {
-    const remData = await subService.getReminder(req.body.userid);
+    const remData = await remService.getReminder(req.body.subid);
     if (!remData) {
       res.status(404).send("Reminder data not available for this user.");
     } else {
@@ -27,19 +27,16 @@ const saveReminderData = async (req, res) => {
   const subid = getDecryptData.subid;
 
   const remData = {
-
-  
-
     freeTrial: getDecryptData.freeTrial,
     paymentDue: getDecryptData.paymentDue,
     paymentDuetom: getDecryptData.paymentDuetom,
-    active/inactive: getDecryptData.active/inactive,
+    active_inactive: getDecryptData.active_inactive,
     spendSummary: getDecryptData.spendSummary,
- 
+
     mobilePush: getDecryptData.mobilePush,
     desktopRem: getDecryptData.desktopRem,
     emailRem: getDecryptData.emailRem,
-}
+  };
 
   // const notData = {
   //   subject: getDecryptData.subject,
@@ -52,7 +49,6 @@ const saveReminderData = async (req, res) => {
 
   //   //parking_date: Date.now(),
   // };
-
 
   try {
     const savedRem = await remService.saveReminder(remData, subid);
