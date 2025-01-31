@@ -91,11 +91,12 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(specs, { customCssUrl: CSS_URL })
-);
+//app.use(
+//  "/api-docs",
+//  swaggerUi.serve,
+//  swaggerUi.setup({ customCssUrl: CSS_URL })
+//);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //----
 
