@@ -28,7 +28,7 @@ app.use(express.static("public"));
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://subtrack-psi.vercel.app/"],
+    origin: ["http://localhost:5173", "https://subtrack-psi.vercel.app/"],
     credentials: true,
     exposedHeaders: ["Set-Cookie", "Date", "ETag"],
     methods: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
@@ -63,6 +63,10 @@ mongoose
   });
 //---
 // Swagger Setup
+// CDN CSS
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: "3.0.0",
@@ -87,7 +91,11 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUI.setup(specs, { customCssUrl: CSS_URL })
+);
 
 //----
 
