@@ -94,7 +94,7 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use(
   "/api-docs",
   swaggerUi.serve,
-  swaggerUI.setup(specs, { customCssUrl: CSS_URL })
+  swaggerUi.setup(specs, { customCssUrl: CSS_URL })
 );
 
 //----
