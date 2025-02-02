@@ -10,7 +10,7 @@ const fetchUserSubscriptionData = async (req, res) => {
     if (!subData) {
       res.status(404).send("Subscription data not available for this user.");
     } else {
-      return res.status(200).send(subData);
+      res.status(200).send(subData);
     }
   } catch (error) {
     console.log(error);
@@ -41,7 +41,7 @@ const saveUserSubscriptionData = async (req, res) => {
   try {
     const savedSub = await subService.saveSubscriptionData(subData, userid);
     if (savedSub) {
-      return res.status(200).send("subscription data saved successfully!");
+      res.status(200).send("subscription data saved successfully!");
     } else res.status(500).send("User subscription data not saved!");
   } catch (error) {
     console.log(error);

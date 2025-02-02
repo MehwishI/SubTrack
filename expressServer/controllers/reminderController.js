@@ -10,7 +10,7 @@ const fetchReminderData = async (req, res) => {
     if (!remData) {
       res.status(404).send("Reminder data not available for this user.");
     } else {
-      return res.status(200).send(remData);
+       res.status(200).send(remData);
     }
   } catch (error) {
     console.log(error);
@@ -53,7 +53,7 @@ const saveReminderData = async (req, res) => {
   try {
     const savedRem = await remService.saveReminder(remData, subid);
     if (savedRem) {
-      return res.status(200).send("Reminder data saved successfully!");
+       res.status(200).send("Reminder data saved successfully!");
     } else res.status(500).send("sub notification reminder data not saved!");
   } catch (error) {
     console.log(error);
